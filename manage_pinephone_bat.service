@@ -1,0 +1,14 @@
+# move this service to /etc/systemd/system/
+# sudo cp codes/manage_pinephone_bat/manage_pinephone_bat.service /etc/systemd/system/manage_pinephone_bat.service
+
+[Unit]
+Description=Manage pinephone battery
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /usr/bin/manage_pinephone_bat.py
+
+[Install]
+WantedBy=multi-user.target
