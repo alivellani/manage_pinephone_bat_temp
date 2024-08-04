@@ -1,3 +1,7 @@
+# # s/usr/bin/manage_pinephone_bat.py
+# # sudo cp Documents/codes/manage_pinephone_bat/manage_pinephone_bat.py /usr/bin/manage_pinephone_bat.py
+
+
 import time
 from datetime import datetime
 import os
