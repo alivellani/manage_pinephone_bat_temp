@@ -45,16 +45,22 @@ def enable_auto_charge(battery_type):
     set_charge_behaviour("auto", battery_type)
 
 def check_thresh(perc, behav, loc):
-    if perc > 90 and '[auto]' in behav:
+    if int(perc) > 90 and '[auto]' in behav:
         inhibit_charge(loc)
         print(f"set inhibiting charger {loc}")
-    if perc < 50 and '[inhibit-charge]' in behav:
+    if int(perc) < 50 and '[inhibit-charge]' in behav:
         enable_auto_charge(loc)
         print(f"setting auto charge {loc}")
 
 def is_batt_at_threshold(int_bat_perc, ext_bat_perc, int_bat_beh, ext_bat_beh ):
-    check_thresh(int_bat_perc, int_bat_beh, internal)
-    check_thresh(ext_bat_perc, ext_bat_beh, external)
+    try:
+        check_thresh(int_bat_perc, int_bat_beh, internal)
+    except:
+        pass
+    try:
+        check_thresh(ext_bat_perc, ext_bat_beh, external)
+    except:
+        pass
 
     # keyboard is connected, not charging the phone. 
     # will suck the keyboard battery dry
